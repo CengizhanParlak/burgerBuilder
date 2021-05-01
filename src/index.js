@@ -6,11 +6,12 @@ import reportWebVitals from "./reportWebVitals";
 import HamburgerContextProvider from "./context/HamburgerContext";
 
 ReactDOM.render(
-  <React.StrictMode>
-      {/* Uygulamayı context provider ile sarmalayınız */}
-      <App />
-  </React.StrictMode>,
-  document.getElementById("root")
+   <React.StrictMode>
+      <HamburgerContextProvider>
+         <App />
+      </HamburgerContextProvider>
+   </React.StrictMode>,
+   document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

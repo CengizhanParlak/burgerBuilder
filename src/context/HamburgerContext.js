@@ -2,7 +2,7 @@ import React, { createContext, useState } from "react";
 
 export const HamburgerContext = createContext();
 
-const Hamburger = ({ children }) => {
+const HamburgerContextProvider = (props) => {
   const [selectedIngredients, setSelectedIngredients] = useState([]);
 
   const getCalculatedTotalPrice = () => {
@@ -10,7 +10,7 @@ const Hamburger = ({ children }) => {
       .reduce((acc, item) => {
         acc += item.count * item.price;
         return acc;
-      }, 4)
+      }, 2)
       .toFixed(2);
   };
   return (
@@ -19,11 +19,12 @@ const Hamburger = ({ children }) => {
         selectedIngredients,
         getCalculatedTotalPrice,
         /* Component'lere gönderilmesi istenilen state değeri */
+        setSelectedIngredients,
       }}
     >
-      {children}
+      {props.children}
     </HamburgerContext.Provider>
   );
 };
 
-export default Hamburger;
+export default HamburgerContextProvider;
